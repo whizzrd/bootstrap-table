@@ -336,7 +336,7 @@ class BootstrapTable {
         html.push(Utils.sprintf('<div class="th-inner %s">', this.options.sortable && column.sortable ?
           'sortable both' : ''))
 
-        let text = this.options.escape ? Utils.escapeHTML(column.title) : column.title
+        let text = Utils.escapingCheck(this.options, 'header') ? Utils.escapeHTML(column.title) : column.title
 
         const title = text
 
@@ -568,7 +568,7 @@ class BootstrapTable {
     ].join(' ')}">`]
 
     if (typeof opts.buttonsOrder === 'string') {
-      opts.buttonsOrder = opts.buttonsOrder.replace(/\[|\]| |'/g, '').split(',')
+      opts.buttonsOrder = Utils.stringToArray(opts.buttonsOrder)
     }
 
     this.buttons = Object.assign(this.buttons, {
@@ -1126,7 +1126,7 @@ class BootstrapTable {
 
     this.paginationParts = opts.paginationParts
     if (typeof this.paginationParts === 'string') {
-      this.paginationParts = this.paginationParts.replace(/\[|\]| |'/g, '').split(',')
+      this.paginationParts = Utils.stringToArray(this.paginationParts)
     }
 
     if (opts.sidePagination !== 'server') {
@@ -3260,7 +3260,7 @@ class BootstrapTable {
     }
 
     this.columns[this.fieldsColumnsIndex[params.field]].title =
-      this.options.escape ? Utils.escapeHTML(params.title) : params.title
+      Utils.escapingCheck(this.options, 'header') ? Utils.escapeHTML(params.title) : params.title
 
     if (this.columns[this.fieldsColumnsIndex[params.field]].visible) {
       this.$header.find('th[data-field]').each((i, el) => {

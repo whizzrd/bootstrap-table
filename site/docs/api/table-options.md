@@ -504,13 +504,15 @@ The table options are defined in `jQuery.fn.bootstrapTable.defaults`.
 
 - **Attribute:** `data-escape`
 
-- **Type:** `Boolean`
+- **Type:** `Boolean|Array`
 
 - **Detail:**
 
   Escapes a string for insertion into HTML, replacing &, <, >, ", `, and ' characters.
 
 - **Default:** `false`
+
+- **Hint:** It's also possible to only escape the table data and not the column titles. For that just pass a array with `header` as value instead of a `boolean`.
 
 - **Example:** [Table Escape](https://examples.bootstrap-table.com/#options/table-escape.html)
 

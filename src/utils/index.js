@@ -205,6 +205,25 @@ export default {
     }
   },
 
+  escapingCheck (options, valuePosition) {
+    let escape = options.escape
+
+    if (typeof escape === 'boolean') {
+      return escape
+    }
+
+    if (typeof escape !== 'string') {
+      return false
+    }
+
+    escape = this.stringToArray(escape)
+    return escape.includes(valuePosition)
+  },
+
+  stringToArray (arrayString) {
+    return arrayString.replace(/[[\] ']/g, '').split(',')
+  },
+
   escapeHTML (text) {
     if (typeof text === 'string') {
       return text
