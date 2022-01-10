@@ -5,6 +5,7 @@ $.extend($.fn.bootstrapTable.defaults, {
   containerStyleClass: 'card',
   containerStyleToolbarClass: 'card-header',
   containerStyleTableContainerClass: 'card-body',
+  containerStyleTableBodyClass: 'table-responsive',
   containerStylePaginationClass: 'card-footer'
 })
 
@@ -25,6 +26,7 @@ $.BootstrapTable = class extends $.BootstrapTable {
     // this.$tableContainer
     this.$toolbar.addClass(this.options.containerStyleToolbarClass)
     this.$tableContainer.addClass(this.options.containerStyleTableContainerClass)
+    this.$tableBody.addClass(this.options.containerStyleTableBodyClass)
     this.$pagination.addClass(this.options.containerStylePaginationClass)
   }
 }
