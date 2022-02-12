@@ -51,7 +51,11 @@ const UtilsCookie = {
     return that._storage.getItem(`${that.options.cookieIdTable}.${cookieName}`)
   },
   deleteCookie (that, cookieName) {
-    return that._storage.removeItem(`${that.options.cookieIdTable}.${cookieName}`)
+    try {
+      return that._storage.removeItem(`${that.options.cookieIdTable}.${cookieName}`)
+    } catch (e) {
+      return null
+    }
   },
   calculateExpiration (cookieExpire) {
     const time = cookieExpire.replace(/[0-9]*/, '') // s,mi,h,d,m,y
